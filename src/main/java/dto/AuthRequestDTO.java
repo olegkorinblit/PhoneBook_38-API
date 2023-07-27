@@ -10,8 +10,12 @@ import lombok.ToString;
 @ToString
 @Builder
 public class AuthRequestDTO {
-//    "username": "string",
-//            "password": "C=gn*Mr-;Tm$K"
+
+//      "username": "string",
+//      "password": "`=iNmQBt9Oo"
+
     String username;
     String password;
+
+
 }
