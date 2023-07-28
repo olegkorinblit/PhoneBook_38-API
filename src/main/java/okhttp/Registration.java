@@ -1,33 +1,34 @@
 package okhttp;
 
 import com.google.gson.Gson;
-import dto.AuthRequestDTO;
 import dto.AuthResponseDTO;
 import dto.ErrorDTO;
+import dto.RegistrationRequestDTO;
 import okhttp3.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class LoginTests {
+public class Registration
+{
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-Gson gson=new Gson();
-OkHttpClient client=new OkHttpClient();
+    Gson gson=new Gson();
+    OkHttpClient client=new OkHttpClient();
 
 
     @Test
-    public void loginPositive() throws IOException {
-
-        AuthRequestDTO requestDTO = AuthRequestDTO.builder()
-                .username("abc@def.com")
-                .password("$Abcdef12345")
+    public void testRegistration() throws IOException {
+        int i = (int) (System.currentTimeMillis() / 1000) % 3600;
+        RegistrationRequestDTO registrationRequestDTO=RegistrationRequestDTO.builder()
+                .username("olegk"+i+"@mail.com")
+                .password("$Abcdef"+i)
                 .build();
 
-        RequestBody requestBody = RequestBody.create(gson.toJson(requestDTO), JSON);
+        RequestBody requestBody = RequestBody.create(gson.toJson(registrationRequestDTO), JSON);
 
         Request request = new Request.Builder()
-                .url("https://contactapp-telran-backend.herokuapp.com/v1/user/login/usernamepassword")
+                .url("https://contactapp-telran-backend.herokuapp.com/v1/user/registration/usernamepassword")
                 .post(requestBody)
                 .build();
 
@@ -48,4 +49,3 @@ OkHttpClient client=new OkHttpClient();
         }
     }
 }
-//eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoiYWJjQGRlZi5jb20iLCJpc3MiOiJSZWd1bGFpdCIsImV4cCI6MTY5MTA5NjY5NSwiaWF0IjoxNjkwNDk2Njk1fQ.lga_5bMmjKSpUIjBdP5hmEegzbWIio78v3JNgcOSVvY
