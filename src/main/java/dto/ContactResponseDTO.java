@@ -1,5 +1,6 @@
 package dto;
 
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +10,11 @@ import lombok.ToString;
 @Getter
 @ToString
 @Builder
-public class RegistrationResponseDTO {
+public class ContactResponseDTO {
 
     //"token": "string"
-    String token;
+    String message;
+
+
+
 }

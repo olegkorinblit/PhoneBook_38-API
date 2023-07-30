@@ -17,5 +17,5 @@ public class ErrorDTO {
 //            "path": "string"
     int status;
     String error;
-    String message;
+    Object message;
 }
